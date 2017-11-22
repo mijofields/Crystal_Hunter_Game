@@ -2,7 +2,7 @@
 
 	var game = {
 
-	crystals: [blue, yellow, red, black]
+	crystals: [blue, red, yello, purple]
 
 	targetScore: function targetScore (min, max) {
 
