@@ -4,7 +4,8 @@
 
 	var game = {
 
-	crystals: ["blue", "red", "yellow", "purple"],
+	crystals: 	["blue","red","yellow","purple"],
+
 	crystalValues: [],
 
 	targetScore: function targetScore (min, max) {  // random number in min, max range inclusive
@@ -12,7 +13,8 @@
 	min = Math.ceil(19);
 	max = Math.floor(120);
 			  
-	console.log(Math.floor(Math.random() * (max - min + 1)) + min);
+	target = (Math.floor(Math.random() * (max - min + 1)) + min);
+	console.log("target score " + target);
 
 
 	}, //end of targetScore ()
@@ -28,10 +30,31 @@
 
 		randomValue = Math.floor(Math.random() * (max - min + 1)) + min;
 		this.crystalValues.push(randomValue);
-		this.crystalValues = $.unique(this.crystalValues);
+		this.crystalValues = $.unique(this.crystalValues); } // end of crystalValues array build
 
-		}
-		}, //end of crystalValue
+		// array.forEach(function(currentValue, index, arr), thisValue)
+		// assign randomValue values to crystals
+
+		// this.crystals.forEach(function(){
+
+		// 	var id = this.crystals[i];
+		// 	console.log(id);
+
+			// $("#id").attr("data-value",this.crystalValues[i]);
+			
+
+
+			// var CrystalClass = $("<img>"+this.crystals[i][1]);
+			// CrystalClass.atrr("data-value", crystalValues[i]);
+
+
+
+
+
+		
+
+			}, //end of crystalValue()
+
 
 
 	playerScore: 0,
@@ -40,17 +63,16 @@
 
 	losses: 0
 
-			}
+			} // end of game object
 
-
+			game.crystalValue(); // call functions or values are not generated
+			game.targetScore();
 			
-			console.log(game.crystals);
-			console.log(game.targetScore()); // why do I need to add these to cause the console.log in the function to work?
-			console.log(game.crystalValue()); // why do I need to add these to cause the console.log in the function to work?
-			console.log(game.playerScore);
-			console.log(game.wins);
-			console.log(game.losses);
-			console.log(game.crystalValues);
+			console.log("game crystals arr " + game.crystals);
+			console.log("player score " + game.playerScore);
+			console.log("game wins " + game.wins);
+			console.log("game losses " + game.losses);
+			console.log("crystal values arr " + game.crystalValues); //pull the value of the random array
 
 
 			

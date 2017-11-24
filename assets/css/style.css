@@ -1,5 +1,8 @@
-body{
+body, .swirl{
 
-
-	background-image: src="https://github.com/mijofields/Crystal_Hunter_Game/blob/master/assets/images/swirl_pattern.png?raw=true";
+	
+	background-image: url(https://github.com/mijofields/Crystal_Hunter_Game/blob/master/assets/images/swirl_pattern.png?raw=true);
+	
 }
+
+
