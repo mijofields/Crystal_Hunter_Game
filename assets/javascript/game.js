@@ -13,7 +13,7 @@
 	min = Math.ceil(19);
 	max = Math.floor(120);
 			  
-	target = (Math.floor(Math.random() * (max - min + 1)) + min);
+	target = (Math.floor(Math.random() * (max - min + 1)) + min); //needs to be stored in a variable dummy
 	console.log("target score " + target);
 
 
@@ -30,17 +30,37 @@
 
 		randomValue = Math.floor(Math.random() * (max - min + 1)) + min;
 		this.crystalValues.push(randomValue);
-		this.crystalValues = $.unique(this.crystalValues); } // end of crystalValues array build
+		this.crystalValues = $.unique(this.crystalValues);}}, // end of crystalValues array build
 
-		// array.forEach(function(currentValue, index, arr), thisValue)
-		// assign randomValue values to crystals
+		
+	valueAssign: function (crystalid){
 
-		// this.crystals.forEach(function(){
+			game.crystalValue();
 
-		// 	var id = this.crystals[i];
-		// 	console.log(id);
+			// var id = this.crystals;
+			// console.log(id);
+			// var selector = '"#'+crystalid+'"';
+		
+			// console.log(selector);
 
-			// $("#id").attr("data-value",this.crystalValues[i]);
+			this.crystals.forEach(function(crystalid){
+
+
+
+			$("#"+crystalid).attr("data-value",this.crystalValues[i])});
+	
+
+
+		// this.crystals.forEach(function(crystalid){
+
+		// 	// var id = this.crystals;
+		// 	// console.log(id);
+		// 	// var selector = '"#'+crystalid+'"';
+		// 	console.log(crystalid);
+		// 	// console.log(selector);
+
+
+		// 	$("#"+crystalid).attr("data-value",this.crystalValues[i])});
 			
 
 
@@ -53,7 +73,7 @@
 
 		
 
-			}, //end of crystalValue()
+			}, //valueAssign()
 
 
 
