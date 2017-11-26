@@ -15,7 +15,7 @@
 			  
 	target = (Math.floor(Math.random() * (max - min + 1)) + min); //needs to be stored in a variable dummy
 	console.log("target score " + target);
-
+	$("#target").text("Target Score: "+target);
 
 	}, //end of targetScore ()
 
@@ -33,49 +33,25 @@
 		this.crystalValues = $.unique(this.crystalValues);}}, // end of crystalValues array build
 
 		
-	valueAssign: function (crystalid){
+	valueAssign: function (){
 
 			game.crystalValue();
 
-			// var id = this.crystals;
-			// console.log(id);
-			// var selector = '"#'+crystalid+'"';
-		
-			// console.log(selector);
+			console.log("crystal values "+ this.crystalValues);
+			// crystalValues = this.crystalValues // because console.log(this) in the next function gives window. a function within a function goes to window
 
-			this.crystals.forEach(function(crystalid){
+			console.log(this.crystals);
 
+			for (i=0; i < this.crystals.length; i++){
 
-
-			$("#"+crystalid).attr("data-value",this.crystalValues[i])});
-	
+				$('#'+this.crystals[i]).attr("data-value", this.crystalValues[i])
 
 
-		// this.crystals.forEach(function(crystalid){
 
-		// 	// var id = this.crystals;
-		// 	// console.log(id);
-		// 	// var selector = '"#'+crystalid+'"';
-		// 	console.log(crystalid);
-		// 	// console.log(selector);
+			};
 
-
-		// 	$("#"+crystalid).attr("data-value",this.crystalValues[i])});
 			
-
-
-			// var CrystalClass = $("<img>"+this.crystals[i][1]);
-			// CrystalClass.atrr("data-value", crystalValues[i]);
-
-
-
-
-
-		
-
-			}, //valueAssign()
-
-
+	}, 
 
 	playerScore: 0,
 
@@ -85,8 +61,11 @@
 
 			} // end of game object
 
-			game.crystalValue(); // call functions or values are not generated
+			// game.crystalValue(); // call functions or values are not generated
 			game.targetScore();
+
+			game.valueAssign();
+
 			
 			console.log("game crystals arr " + game.crystals);
 			console.log("player score " + game.playerScore);
