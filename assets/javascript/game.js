@@ -73,6 +73,7 @@
 
 		this.targetScore();
 		this.valueAssign();
+		console.log("target" + game.target)
 
 
 			$(".img-crystal").on("click", function() {
@@ -92,14 +93,33 @@
     			$("#score").text("Current Score: " + game.playerScore);    			
     			game.losses++;    			
     			$("#losses").text("Losses: "+game.losses);
-    			$("#warning").text("You lose, click a crystal to play again.");
+    			$("#warning").text("You lose, click New Game to play again.");
+    			$("#button").removeClass("disabled").addClass("active");
+    			$("#button").on("click", function() {
+
+    				game.target=0;
+    				game.crystalValues=[];
+    				game.playerScore=0;
+    				game.crystalScore=0;
+    				game.targetScore();
+    				game.valueAssign();
+
+    				$("#score").text("Current Score: " + game.playerScore);
+    				$("#target").text("Target Score: "+game.target);
+    				$("#button").removeClass("active").addClass("disabled");
+    				$("#warning").text("");
+
+
+    			});
+
+
     			
 
     		}else if(game.playerScore + crystalScore === game.target){
 
     			game.playerScore += crystalScore;
     			$("#score").text("Current Score: " + game.playerScore);
-    			$("#warning").text("Holy math! You win Batman! Click a crystal to play again.");
+    			$("#warning").text("Holy math! You win Batman! Click New Game to play again.");
     			game.wins++;
     			$("#wins").text("Wins: " + game.wins);
 
