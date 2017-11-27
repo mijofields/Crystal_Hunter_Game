@@ -19,7 +19,7 @@
 <body>
 
 
-<nav class="navbar fixed-top navbar-dark bg-primary">
+<nav class="navbar fixed-top navbar-dark bg-purple">
   <a class="navbar-brand" href="#!">Crystal Collector Game</a>
   <button type="button" class="btn btn-warning float-right">Reset</button>
 </nav>
@@ -41,24 +41,23 @@
 <div class="row">
 <div class="col d-flex justify-content-around">
 	<div class="col d-flex flex-column">
-<div class="col bg-warning text-left font-weight-bold"><br><h5 id="target">Target Score:</h5></div>
-<div class="col bg-danger text-left font-weight-bold"><br><h5 id="score">Score:</h5></div>
-<div class="col bg-primary text-left font-weight-bold"><br><h5 id="wins">Wins:</h5></div>
-<div class="col bg-secondary text-left font-weight-bold"><br><h5 id="losses">Losses:</h5></div>
-
+<div class="col bg-primary text-left font-weight-bold"><br><h5 id="target">Target Score:</h5></div>
+<div class="col bg-purple text-left font-weight-bold"><br><h5 id="score">Current Score: 0</h5></div>
+<div class="col bg-success text-left font-weight-bold"><br><h5 id="wins">Wins: 0</h5></div>
+<div class="col bg-danger text-left font-weight-bold"><br><h5 id="losses">Losses: 0</h5></div>
 </div>
 
 <div class="col">
-<img src="https://github.com/mijofields/Crystal_Hunter_Game/blob/master/assets/images/crystalblue.jpg?raw=true"  id="blue" class="img-fluid border border-dark" alt="Blue Crystal">
+<img src="https://github.com/mijofields/Crystal_Hunter_Game/blob/master/assets/images/crystalblue.jpg?raw=true"  id="blue" class="img-fluid border border-dark img-crystal" alt="Blue Crystal">
 </div>
 <div class="col">
-<img src="https://github.com/mijofields/Crystal_Hunter_Game/blob/master/assets/images/crystalred.jpg?raw=true"  id="red" class="img-fluid border border-dark" alt="Red Crystal">
+<img src="https://github.com/mijofields/Crystal_Hunter_Game/blob/master/assets/images/crystalred.jpg?raw=true"  id="red" class="img-fluid border border-dark img-crystal" alt="Red Crystal">
 </div>
 <div class="col">
-<img src="https://github.com/mijofields/Crystal_Hunter_Game/blob/master/assets/images/crystal4.jpg?raw=true"  id="yellow" class="img-fluid border border-dark" alt="Yellow Crystal">
+<img src="https://github.com/mijofields/Crystal_Hunter_Game/blob/master/assets/images/crystal4.jpg?raw=true"  id="yellow" class="img-fluid border border-dark img-crystal" alt="Yellow Crystal">
 </div>
 <div class="col">
-<img src="https://github.com/mijofields/Crystal_Hunter_Game/blob/master/assets/images/crystslpurple.jpg?raw=true" id="purple" class="img-fluid border border-dark" alt="Purple Crystal">
+<img src="https://github.com/mijofields/Crystal_Hunter_Game/blob/master/assets/images/crystslpurple.jpg?raw=true" id="purple" class="img-fluid border border-dark img-crystal" alt="Purple Crystal">
 </div>
 
 
@@ -66,13 +65,18 @@
 
 </div>
 
+<div class="row d-flex justify-content-center">
+
+  <h4 class="text-center" id="warning"></h4>  
+
+</div>
 
 
 
 
 
 
-<nav class="navbar fixed-bottom navbar-dark bg-primary justify-content-center">
+<nav class="navbar fixed-bottom navbar-dark bg-purple justify-content-center">
   <a class="navbar-brand" href="#!">Mike Fields &copy 2017</a>
 </nav>
 

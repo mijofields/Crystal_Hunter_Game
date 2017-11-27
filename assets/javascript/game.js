@@ -8,6 +8,8 @@
 
 	crystalValues: [],
 
+	target: 0,
+
 	targetScore: function targetScore (min, max) {  // random number in min, max range inclusive
 
 	min = Math.ceil(19);
@@ -15,6 +17,7 @@
 			  
 	target = (Math.floor(Math.random() * (max - min + 1)) + min); //needs to be stored in a variable dummy
 	console.log("target score " + target);
+	game.target = target;
 	$("#target").text("Target Score: "+target);
 
 	}, //end of targetScore ()
@@ -50,21 +53,91 @@
 
 			};
 
-			
-	}, 
+
+    	},
+
+
+			 
 
 	playerScore: 0,
 
 	wins: 0,
 
-	losses: 0
+	losses: 0,
+
+
+
+	gameFlow: function(){
+
+
+
+		this.targetScore();
+		this.valueAssign();
+
+
+			$(".img-crystal").on("click", function() {
+
+    		var crystalScore = ($(this).attr("data-value"));
+    		crystalScore = parseInt(crystalScore);
+    		console.log("C Score " + crystalScore);
+
+
+    		if(game.playerScore > game.target){
+
+    		
+
+    		} else if (game.playerScore + crystalScore > game.target){
+
+    			game.playerScore += crystalScore;
+    			$("#score").text("Current Score: " + game.playerScore);    			
+    			game.losses++;    			
+    			$("#losses").text("Losses: "+game.losses);
+    			$("#warning").text("You lose, click a crystal to play again.");
+    			
+
+    		}else if(game.playerScore + crystalScore === game.target){
+
+    			game.playerScore += crystalScore;
+    			$("#score").text("Current Score: " + game.playerScore);
+    			$("#warning").text("Holy math! You win Batman! Click a crystal to play again.");
+    			game.wins++;
+    			$("#wins").text("Wins: " + game.wins);
+
+    		}else{
+
+    		game.playerScore += crystalScore;
+    		$("#score").text("Current Score: " + game.playerScore);
+    		console.log("P score "+ game.playerScore);
+
+
+
+    		}
+
+    		});
+
+
+
+
+
+
+	} //end of game flow
 
 			} // end of game object
 
-			// game.crystalValue(); // call functions or values are not generated
-			game.targetScore();
+			// // game.crystalValue(); // call functions or values are not generated
+			// game.targetScore();
 
-			game.valueAssign();
+			// game.valueAssign();
+
+
+
+			game.gameFlow();
+
+    	
+
+
+
+
 
 			
 			console.log("game crystals arr " + game.crystals);
