@@ -16,7 +16,6 @@
 	max = Math.floor(120);
 			  
 	target = (Math.floor(Math.random() * (max - min + 1)) + min); //needs to be stored in a variable dummy
-	console.log("target score " + target);
 	game.target = target;
 	$("#target").text("Target Score: "+target);
 
@@ -40,10 +39,7 @@
 
 			game.crystalValue();
 
-			console.log("crystal values "+ this.crystalValues);
 			// crystalValues = this.crystalValues // because console.log(this) in the next function gives window. a function within a function goes to window
-
-			console.log(this.crystals);
 
 			for (i=0; i < this.crystals.length; i++){
 
@@ -57,6 +53,17 @@
     	},
 
 
+    newGame: function() {
+
+
+
+
+
+
+
+    },
+
+
 			 
 
 	playerScore: 0,
@@ -66,6 +73,22 @@
 	losses: 0,
 
 
+	newGame: function(){
+
+
+    		game.crystalValues=[];
+    		game.playerScore=0;
+    		game.crystalScore=0;
+    		game.targetScore();
+    		game.valueAssign();
+    		$("#score").text("Current Score: " + game.playerScore);
+    		$("#button").removeClass("active").addClass("disabled");
+    		$("#warning").text("");
+
+
+	},	
+
+
 
 	gameFlow: function(){
 
@@ -73,14 +96,12 @@
 
 		this.targetScore();
 		this.valueAssign();
-		console.log("target" + game.target)
 
 
 			$(".img-crystal").on("click", function() {
 
     		var crystalScore = ($(this).attr("data-value"));
     		crystalScore = parseInt(crystalScore);
-    		console.log("C Score " + crystalScore);
 
 
     		if(game.playerScore > game.target){
@@ -92,28 +113,14 @@
     			game.playerScore += crystalScore;
     			$("#score").text("Current Score: " + game.playerScore);    			
     			game.losses++;    			
-    			$("#losses").text("Losses: "+game.losses);
+    			$("#losses").text("Losses: "+ game.losses);
     			$("#warning").text("You lose, click New Game to play again.");
     			$("#button").removeClass("disabled").addClass("active");
-    			$("#button").on("click", function() {
-
-    				game.target=0;
-    				game.crystalValues=[];
-    				game.playerScore=0;
-    				game.crystalScore=0;
-    				game.targetScore();
-    				game.valueAssign();
-
-    				$("#score").text("Current Score: " + game.playerScore);
-    				$("#target").text("Target Score: "+game.target);
-    				$("#button").removeClass("active").addClass("disabled");
-    				$("#warning").text("");
-
-
-    			});
+    			$("#button").on("click", game.newGame);
 
 
     			
+    			   			
 
     		}else if(game.playerScore + crystalScore === game.target){
 
@@ -122,13 +129,14 @@
     			$("#warning").text("Holy math! You win Batman! Click New Game to play again.");
     			game.wins++;
     			$("#wins").text("Wins: " + game.wins);
+    			$("#button").removeClass("disabled").addClass("active");
+    			$("#button").on("click", game.newGame);
+
 
     		}else{
 
     		game.playerScore += crystalScore;
     		$("#score").text("Current Score: " + game.playerScore);
-    		console.log("P score "+ game.playerScore);
-
 
 
     		}
@@ -140,31 +148,13 @@
 
 
 
-	} //end of game flow
+	}, //end of game flow
 
 			} // end of game object
 
-			// // game.crystalValue(); // call functions or values are not generated
-			// game.targetScore();
-
-			// game.valueAssign();
-
-
-
+			
 			game.gameFlow();
 
-    	
-
-
-
-
-
-			
-			console.log("game crystals arr " + game.crystals);
-			console.log("player score " + game.playerScore);
-			console.log("game wins " + game.wins);
-			console.log("game losses " + game.losses);
-			console.log("crystal values arr " + game.crystalValues); //pull the value of the random array
 
 
 			
