@@ -6,11 +6,15 @@
 
 	crystals: 	["blue","red","yellow","purple"],
 
+	//an array so the game is scalable - crystals can be added
+
 	crystalValues: [],
 
 	target: 0,
 
-	targetScore: function targetScore (min, max) {  // random number in min, max range inclusive
+	//target score variable that can be accessed in any method
+
+	targetScore: function targetScore (min, max) {  // random number in min to max range inclusive
 
 	min = Math.ceil(19);
 	max = Math.floor(120);
@@ -21,7 +25,7 @@
 
 	}, //end of targetScore ()
 
-	crystalValue: function crystalValue (min, max) {  // random number in min, max range inclusive
+	crystalValue: function crystalValue (min, max) {  // random number in min to max range inclusive
 
 
 		min = Math.ceil(1);
@@ -72,9 +76,13 @@
 
 	losses: 0,
 
+	newGameMarker: false, //so that new game cannot be clicked continutally
+
 
 	newGame: function(){
 
+
+			if(game.newGameMarker===true){
 
     		game.crystalValues=[];
     		game.playerScore=0;
@@ -84,9 +92,10 @@
     		$("#score").text("Current Score: " + game.playerScore);
     		$("#button").removeClass("active").addClass("disabled");
     		$("#warning").text("");
+    		game.newGameMarker=false;
 
 
-	},	
+	}},	
 
 
 
@@ -104,7 +113,7 @@
     		crystalScore = parseInt(crystalScore);
 
 
-    		if(game.playerScore > game.target){
+    		if(game.playerScore > game.target || game.playerScore === game.target){
 
     		
 
@@ -114,6 +123,7 @@
     			$("#score").text("Current Score: " + game.playerScore);    			
     			game.losses++;    			
     			$("#losses").text("Losses: "+ game.losses);
+    			game.newGameMarker=true;
     			$("#warning").text("You lose, click New Game to play again.");
     			$("#button").removeClass("disabled").addClass("active");
     			$("#button").on("click", game.newGame);
@@ -128,6 +138,7 @@
     			$("#score").text("Current Score: " + game.playerScore);
     			$("#warning").text("Holy math! You win Batman! Click New Game to play again.");
     			game.wins++;
+    			game.newGameMarker=true;
     			$("#wins").text("Wins: " + game.wins);
     			$("#button").removeClass("disabled").addClass("active");
     			$("#button").on("click", game.newGame);
